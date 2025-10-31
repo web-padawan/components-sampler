@@ -5,7 +5,7 @@
 /** @type {ComponentData} */
 export default {
   sample: `
-    <vaadin-tooltip for="target" text="Built with native popover API"></vaadin-tooltip>
+    <vaadin-tooltip for="target"></vaadin-tooltip>
     <button id="target">Show tooltip</button>
   `,
   data: {
@@ -42,6 +42,17 @@ export default {
       },
       {
         kind: 'field',
+        name: 'markdown',
+        type: {
+          text: 'boolean',
+        },
+        default: 'false',
+        description: 'When enabled, the tooltip text is rendered as a markdown',
+        attribute: 'markdown',
+        reflects: true,
+      },
+      {
+        kind: 'field',
         name: 'position',
         type: {
           text: `'bottom' | 'bottom-end' | 'bottom-start' | 'end' | 'end-bottom' | 'end-top' | 'start' | 'start-bottom' | 'start-top' | 'top' | 'top-end' | 'top-start'`,
@@ -49,6 +60,16 @@ export default {
         default: 'bottom',
         description: 'Position of the tooltip with respect to its target',
         attribute: 'position',
+      },
+      {
+        kind: 'field',
+        name: 'text',
+        type: {
+          text: 'string',
+        },
+        default: 'A dummy tooltip text',
+        description: 'Text of the tooltip',
+        attribute: 'text',
       },
     ],
     cssProperties: [
@@ -74,7 +95,7 @@ export default {
       },
       {
         description: 'Box shadow',
-        name: '--vaadin-tooltip-box-shadow',
+        name: '--vaadin-tooltip-shadow',
         default: '0 3px 8px -1px rgba(0, 0, 0, 0.2)',
       },
       {

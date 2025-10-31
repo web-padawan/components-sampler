@@ -15,8 +15,20 @@ export function initComponents(element) {
           element.opened = false;
         });
 
-        root.appendChild(closeBtn)
+        root.appendChild(closeBtn);
       }
-    }
+    };
+  }
+
+  if (element.localName === 'vaadin-tooltip') {
+    const defaultText = 'A dummy tooltip text';
+    element.text = defaultText;
+    element.addEventListener('content-changed', (e) => {
+      // Restore default text if cleared
+      const { content } = e.detail;
+      if (!content) {
+        element.text = defaultText;
+      }
+    });
   }
 }

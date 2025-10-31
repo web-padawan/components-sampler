@@ -122,12 +122,12 @@ export default {
       {
         description: 'Background',
         name: '--vaadin-dialog-background',
-        default: 'var(--vaadin-background-color)',
+        default: 'var(--vaadin-overlay-background)',
       },
       {
         description: 'Border color',
         name: '--vaadin-dialog-border-color',
-        default: 'var(--vaadin-border-color-secondary)',
+        default: 'var(--vaadin-overlay-border-color)',
       },
         {
         description: 'Border radius',
@@ -137,12 +137,12 @@ export default {
       {
         description: 'Border width',
         name: '--vaadin-dialog-border-width',
-        default: '1px',
+        default: 'var(--vaadin-overlay-border-width)',
       },
       {
         description: 'Box shadow',
-        name: '--vaadin-dialog-box-shadow',
-        default: '0 8px 24px -4px rgba(0, 0, 0, 0.3)',
+        name: '--vaadin-dialog-shadow',
+        default: 'var(--vaadin-overlay-shadow)',
       },
       {
         description: 'Max width',

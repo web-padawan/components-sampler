@@ -145,8 +145,8 @@ export default {
       },
       {
         description: 'Box shadow',
-        name: '--vaadin-popover-box-shadow',
-        default: '0 8px 24px -4px rgba(0, 0, 0, 0.3)',
+        name: '--vaadin-popover-shadow',
+        default: 'var(--vaadin-overlay-shadow)',
       },
       {
         description: 'Offset bottom',

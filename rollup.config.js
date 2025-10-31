@@ -6,7 +6,7 @@ export default {
     sourcemap: false,
     format: 'es',
     name: 'playground',
-    file: 'dist/assets/playground.js',
+    dir: 'dist/assets',
   },
   plugins: [
     nodeResolve()
