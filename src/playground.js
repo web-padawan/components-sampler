@@ -1,3 +1,4 @@
+import '@vaadin/confirm-dialog';
 import '@vaadin/dialog';
 import '@vaadin/popover';
 import '@vaadin/tooltip';

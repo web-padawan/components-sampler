@@ -129,7 +129,7 @@ export default {
         name: '--vaadin-dialog-border-color',
         default: 'var(--vaadin-overlay-border-color)',
       },
-        {
+      {
         description: 'Border radius',
         name: '--vaadin-dialog-border-radius',
         default: 'var(--vaadin-radius-l)',

@@ -544,7 +544,7 @@ hr {
 }
 
 /* Prevent FOUC */
-*:not(:defined) {
+*:not(:defined):not(vaadin-dialog-content) {
   visibility: hidden;
 }
 

@@ -89,7 +89,7 @@ export default {
         kind: 'field',
         name: 'position',
         type: {
-          text:  `'bottom' | 'bottom-end' | 'bottom-start' | 'end' | 'end-bottom' | 'end-top' | 'start' | 'start-bottom' | 'start-top' | 'top' | 'top-end' | 'top-start'`,
+          text: `'bottom' | 'bottom-end' | 'bottom-start' | 'end' | 'end-bottom' | 'end-top' | 'start' | 'start-bottom' | 'start-top' | 'top' | 'top-end' | 'top-start'`,
         },
         default: 'bottom',
         description: 'Position of the tooltip with respect to its target',

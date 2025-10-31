@@ -1,4 +1,31 @@
+function addValueListener(element, prop, attr) {
+  const input = document.getElementById(prop);
+
+  // Apply default value
+  element[prop] = input.placeholder;
+
+  input.addEventListener('change', () => {
+    // Restore default value if input os cleared
+    if (!input.value) {
+      element[prop] = input.placeholder;
+    }
+  });
+}
+
 export function initComponents(element) {
+  // Init confirm-dialog open button
+  if (element.localName === 'vaadin-confirm-dialog') {
+    const openBtn = element.nextElementSibling;
+    openBtn.addEventListener('click', () => {
+      element.opened = !element.opened;
+    });
+
+    addValueListener(element, 'message');
+    addValueListener(element, 'cancelTheme');
+    addValueListener(element, 'confirmTheme');
+    addValueListener(element, 'rejectTheme');
+  }
+
   // Init dialog open and close buttons
   if (element.localName === 'vaadin-dialog') {
     const openBtn = element.nextElementSibling;
@@ -21,14 +48,6 @@ export function initComponents(element) {
   }
 
   if (element.localName === 'vaadin-tooltip') {
-    const defaultText = 'A dummy tooltip text';
-    element.text = defaultText;
-    element.addEventListener('content-changed', (e) => {
-      // Restore default text if cleared
-      const { content } = e.detail;
-      if (!content) {
-        element.text = defaultText;
-      }
-    });
+    addValueListener(element, 'text');
   }
 }

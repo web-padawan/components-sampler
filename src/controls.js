@@ -1,3 +1,12 @@
+function getNumericValue(name, value) {
+  // Dialog and popover use `null` as a way to reset width and height
+  if (['width', 'height'].includes(name) && value === '') {
+    return null;
+  }
+
+  return parseInt(value);
+}
+
 export function initControls(element) {
   // Boolean / number / string properties
   document.querySelectorAll('.control--prop input').forEach((input) => {
@@ -7,7 +16,7 @@ export function initControls(element) {
           element[target.name] = target.checked;
           break;
         case 'number':
-          element[target.name] = parseInt(target.value)
+          element[target.name] = getNumericValue(target.name, target.value);
           break;
         default:
           element[target.name] = target.value

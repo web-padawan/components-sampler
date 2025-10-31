@@ -20,6 +20,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@vaadin/confirm-dialog": "25.0.0-beta3",
     "@vaadin/dialog": "25.0.0-beta3",
     "@vaadin/popover": "25.0.0-beta3",
     "@vaadin/tooltip": "25.0.0-beta3",
