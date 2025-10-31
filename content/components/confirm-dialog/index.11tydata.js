@@ -63,6 +63,16 @@ export default {
       },
       {
         kind: 'field',
+        name: 'header',
+        type: {
+          text: 'string',
+        },
+        default: 'Example header',
+        description: 'Header of the dialog',
+        attribute: 'header',
+      },
+      {
+        kind: 'field',
         name: 'height',
         type: {
           text: 'number',
@@ -77,7 +87,7 @@ export default {
         type: {
           text: 'string',
         },
-        default: 'A dummy confirmation message',
+        default: 'Example confirmation message',
         description: 'The message or confirmation question',
         attribute: 'message',
       },
@@ -132,6 +142,68 @@ export default {
         default: '',
         description: 'Width of the dialog',
         attribute: 'width',
+      },
+    ],
+    cssProperties: [
+      {
+        description: 'Background',
+        name: '--vaadin-dialog-background',
+        default: 'var(--vaadin-overlay-background)',
+      },
+      {
+        description: 'Border color',
+        name: '--vaadin-dialog-border-color',
+        default: 'var(--vaadin-overlay-border-color)',
+      },
+      {
+        description: 'Border radius',
+        name: '--vaadin-dialog-border-radius',
+        default: 'var(--vaadin-radius-l)',
+      },
+      {
+        description: 'Border width',
+        name: '--vaadin-dialog-border-width',
+        default: 'var(--vaadin-overlay-border-width)',
+      },
+      {
+        description: 'Box shadow',
+        name: '--vaadin-dialog-shadow',
+        default: 'var(--vaadin-overlay-shadow)',
+      },
+      {
+        description: 'Max width',
+        name: '--vaadin-confirm-dialog-max-width',
+        default: '25em',
+      },
+      {
+        description: 'Min width',
+        name: '--vaadin-confirm-dialog-min-width',
+        default: '15em',
+      },
+      {
+        description: 'Padding',
+        name: '--vaadin-dialog-padding',
+        default: 'var(--vaadin-padding-l)',
+      },
+      {
+        description: 'Title color',
+        name: '--vaadin-dialog-title-color',
+        default: 'var(--vaadin-text-color)',
+      },
+      {
+        description: 'Title font size',
+        name: '--vaadin-dialog-title-font-size',
+        default: '1em',
+      },
+      {
+        description: 'Title font weight',
+        name: '--vaadin-dialog-title-font-weight',
+        default: '600',
+      },
+      {
+        description: 'Title line height',
+        name: '--vaadin-dialog-title-line-height',
+        default: 'inherit',
       },
     ],
   },

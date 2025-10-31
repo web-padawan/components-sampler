@@ -29,7 +29,7 @@ export default {
         type: {
           text: 'string',
         },
-        default: '',
+        default: 'Example title',
         description: 'Title of the dialog',
         attribute: 'header-title',
       },

@@ -20,6 +20,7 @@ export function initComponents(element) {
       element.opened = !element.opened;
     });
 
+    addValueListener(element, 'header');
     addValueListener(element, 'message');
     addValueListener(element, 'cancelTheme');
     addValueListener(element, 'confirmTheme');
@@ -45,6 +46,8 @@ export function initComponents(element) {
         root.appendChild(closeBtn);
       }
     };
+
+    addValueListener(element, 'headerTitle');
   }
 
   if (element.localName === 'vaadin-tooltip') {

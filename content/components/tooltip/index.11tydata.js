@@ -67,7 +67,7 @@ export default {
         type: {
           text: 'string',
         },
-        default: 'A dummy tooltip text',
+        default: 'Example text',
         description: 'Text of the tooltip',
         attribute: 'text',
       },
