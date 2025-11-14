@@ -1,0 +1,69 @@
+
+<div class="controls">
+
+{% set union = r/[|]/g %}
+  {% if data.attributes %}
+  <h2 class="controls__title">Attributes</h2>
+  <div class="controls__group">
+  {% for attr in data.attributes %}
+    <div class="control control--attr">
+      <label for="{{ attr.name }}" class="control__label">{{ attr.name }}</label>
+      {% if attr.type.text == 'boolean' %}
+        <input id="{{ attr.name }}" class="control__value" name="{{ attr.name }}" type="checkbox" />
+      {% endif %}
+      {% if union.test(attr.type.text) %}
+        {{ attr | select | safe }}
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if data.members %}
+  <h2 class="controls__title">Properties</h2>
+  <div class="controls__group">
+  {% for prop in data.members %}
+    <div class="control control--prop">
+      <label for="{{ prop.name }}" class="control__label">{{ prop.name }}</label>
+      {% if prop.type.text == 'boolean' %}
+        <input id="{{ prop.name }}" class="control__value" name="{{ prop.name }}" type="checkbox" />
+      {% endif %}
+      {% if union.test(prop.type.text) %}
+        {{ prop | select | safe }}
+      {% endif %}
+      {% if prop.type.text == 'number' %}
+        <input id="{{ prop.name }}" class="control__value" name="{{ prop.name }}" placeholder="{{ prop.default }}" type="number" />
+      {% endif %}
+      {% if prop.type.text == 'string' %}
+        <input id="{{ prop.name }}" class="control__value" name="{{ prop.name }}" placeholder="{{ prop.default }}" type="text" />
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if data.variants %}
+  <h2 class="controls__title">Variants</h2>
+  <div class="controls__group">
+  {% for variant in data.variants %}
+    <div class="control control--variant">
+      <label for="{{ variant.name }}" class="control__label">{{ variant.name }}</label>
+      <input id="{{ variant.name }}" class="control__value" name="{{ variant.name }}" type="checkbox" />
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if data.cssProperties %}
+  <h2 class="controls__title">Custom CSS properties</h2>
+  <div class="controls__group">
+  {% for prop in data.cssProperties %}
+    <div class="control control--cssprop">
+      <label class="control__label" for="css-{{ prop.name }}">{{ prop.description }}</label>
+      <input id="css-{{ prop.name }}" class="control__value" name="{{ prop.name }}" placeholder="{{ prop.default }}" type="text" />
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+
+</div>

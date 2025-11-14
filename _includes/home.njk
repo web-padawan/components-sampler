@@ -12,17 +12,13 @@
     {% include "partials/header.njk" %}
 
     <div class="app-layout__wrapper">
-      {% include "partials/navigation.njk" %}
-
       <div class="app-layout__content">
         <div class="page">
           <main class="page__main">
             <article>
-              <div class="page__header">
-                <h1 class="page__title">
-                  {{ title }}
-                </h1>
-              </div>
+              <h1 class="page__title">
+                {{ title }}
+              </h1>
 
               <div class="article">
                 {{ content | safe }}
@@ -31,6 +27,16 @@
           </main>
         </div>
       </div>
+
+      <input type="checkbox" name="navigation" id="navigation" class="visually-hidden" />
+
+      <div class="app-layout__sidebar">
+        <div class="app-layout__sidebar-inner">
+          {% include "partials/navigation.njk" %}
+          {% include "partials/controls.njk" %}
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </body>
