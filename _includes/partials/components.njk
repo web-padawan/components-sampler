@@ -1,0 +1,16 @@
+<input type="radio" name="toolbar" id="components" class="visually-hidden" checked />
+
+<nav class="components {% if '/' == page.url %} components--show{% endif %}">
+  <h3 class="components__title">
+    Components
+  </h3>
+  <ul role="list" class="components__list">
+    {% for doc in collections.components  %}
+      <li>
+        <a href="{{ doc.url }}" class="components__link">
+          {{ doc.data.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

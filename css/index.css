@@ -1,9 +1,7 @@
 :root {
-  --font-family-default:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-family-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-family-default: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
@@ -60,6 +58,11 @@
 
 * {
   margin: 0;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
@@ -174,7 +177,18 @@ a.app-header__title:hover {
 }
 
 /* Main layout */
-.app-layout__sidebar {
+.app-layout {
+  height: 100%;
+}
+
+.app-layout__wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 4rem);
+}
+
+/* Sidebar */
+.sidebar {
   z-index: 2;
   inset: 4rem 0 0;
   height: calc(100vh - 4rem);
@@ -184,10 +198,19 @@ a.app-header__title:hover {
   left: auto;
   max-width: 100%;
   width: min(400px, 100vw);
+  flex-shrink: 0;
   border-left: solid 1px var(--color-neutral-border);
 }
 
-.app-layout__sidebar-inner {
+@media (min-width: 640px) {
+  .sidebar {
+    position: sticky;
+    margin-left: auto;
+    order: 1;
+  }
+}
+
+.sidebar__inner {
   min-height: 100%;
   width: 100%;
   padding-block: var(--space-4);
@@ -198,12 +221,17 @@ a.app-header__title:hover {
   margin-left: auto;
 }
 
-#navigation:checked + .app-layout__sidebar {
+#sidebar:checked + .sidebar {
   display: none;
+}
+
+.page {
+  width: 100%;
 }
 
 .page__main {
   max-width: 100%;
+  height: 100%;
   padding-inline: var(--space-6);
   padding-block: var(--space-6);
   margin-inline: auto;
@@ -216,36 +244,19 @@ a.app-header__title:hover {
   margin-block-end: var(--space-3);
 }
 
-/* Page actions */
-.actions {
+.sample {
   display: flex;
-  gap: var(--space-4);
+  justify-content: center;
   align-items: center;
-  font-size: var(--font-size-sm);
-}
-
-.actions__btn {
-  display: flex;
-  align-items: center;
-  padding: var(--space-1);
-  gap: var(--space-1);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  color: var(--color-primary-text);
-  background: none;
-  border: none;
-  text-decoration: none;
-}
-
-.actions__btn:hover {
-  background: var(--color-neutral-bg-hover);
+  height: 100%;
+  width: 100%;
 }
 
 /* Navigation */
-.nav-list__link {
+.components__link {
   gap: var(--space-2);
   padding-block: var(--space-2);
-  padding-inline: calc(var(--space-3) + var(--nav-list-level, 0) * var(--space-4)) var(--space-3);
+  padding-inline: var(--space-3);
   border-radius: var(--radius-lg);
   color: var(--color-neutral-text);
   align-items: center;
@@ -253,35 +264,27 @@ a.app-header__title:hover {
   display: flex;
 }
 
-.nav-list__link:hover {
+.components__link:hover {
   background-color: var(--color-neutral-bg);
 }
 
-.nav-list__link[aria-current='page'] {
+.components__link[aria-current='page'] {
   background-color: var(--color-primary-bg);
 }
 
-.nav-list__link span {
+.components__link span {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.nav-section {
+.components {
+  display: none;
   padding-inline: var(--space-4);
-  margin-block-start: var(--space-7);
+  margin-block: var(--space-4);
 }
 
-.nav-section:first-of-type,
-.nav-section.nav-section--continued {
-  margin-block-start: var(--space-4);
-}
-
-.nav-section:last-of-type {
-  margin-block-end: var(--space-4);
-}
-
-.nav-section__title {
+.components__title {
   font-size: var(--font-size-sm);
   font-weight: 700;
   color: var(--color-neutral-text);
@@ -289,6 +292,10 @@ a.app-header__title:hover {
   letter-spacing: 0.02em;
   margin-block-end: var(--space-2);
   margin-inline-start: var(--space-3);
+}
+
+.components--show {
+  display: block;
 }
 
 /* Drawer toggle checkbox */
@@ -308,6 +315,44 @@ a.app-header__title:hover {
 /* Prevent FOUC */
 *:not(:defined):not(vaadin-dialog-content) {
   visibility: hidden;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  padding-inline: var(--space-4);
+}
+
+.toolbar__label {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary-text);
+  padding: var(--space-2);
+  cursor: pointer;
+  gap: var(--space-2);
+}
+
+.toolbar__icon {
+  padding: 0;
+}
+
+/* Sidebar tabs */
+
+.controls__knobs,
+.controls__styles {
+  display: none;
+}
+
+#components:checked + .components {
+  display: block;
+}
+
+#knobs:checked + .controls__knobs {
+  display: block;
+}
+
+#styles:checked + .controls__styles {
+  display: block;
 }
 
 /* Playground */
