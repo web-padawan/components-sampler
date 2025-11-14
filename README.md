@@ -1,4 +1,4 @@
-# Components playground
+# Components sampler
 
 Run the project:
 
