@@ -129,6 +129,11 @@ export default {
         default: 'var(--vaadin-overlay-background)',
       },
       {
+        description: 'Backdrop background',
+        name: '--vaadin-overlay-backdrop-background',
+        default: 'rgba(0, 0, 0, 0.2)',
+      },
+      {
         description: 'Border color',
         name: '--vaadin-popover-border-color',
         default: 'var(--vaadin-overlay-border-color)',
